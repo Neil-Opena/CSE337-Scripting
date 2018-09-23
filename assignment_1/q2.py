@@ -22,8 +22,24 @@ for day_price_line in date_price_file:
         else:
             weekly_prices[start_of_week].extend(prices)
 
-temp_sum = 0
+output_file = open("q2_output.txt", "w")
 for key in weekly_prices.keys():
-    temp_sum += len(weekly_prices[key])
+    prices  = weekly_prices[key]
+    list.sort(prices)
+    date_string = key.strftime("%Y-%m-%d")
+
+    max_price = prices[-1]
+    min_price = prices[0]
+    weekly_price = 0
+    for price in prices:
+        weekly_price += price
+    mean_price = weekly_price / len(prices)
+
+    output_file.write(date_string + ": ")
+    output_file.write(str(max_price) + ", ")
+    output_file.write(str(min_price) + ", ")
+    output_file.write(str(mean_price))
+    output_file.write("\n")
     
-print(temp_sum)
+output_file.close()
+
