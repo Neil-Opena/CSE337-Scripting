@@ -34,6 +34,8 @@ commodities_soup = BeautifulSoup(url_response, 'html.parser')
 
 commodities_data = commodities_soup.find_all("tr",class_=is_a_data_row)
 
+commodities_list_form = []
+
 for data_row in commodities_data:
     #get the symbol
     symbol = get_symbol(data_row)
@@ -45,9 +47,12 @@ for data_row in commodities_data:
     market_time = get_market_time(data_row)
     #get the change
     change = get_change(data_row)
-    print(change)
 
-
+    output_file.write(symbol + ",")
+    output_file.write(name + ",")
+    output_file.write(last_price + ",")
+    output_file.write(market_time + ",")
+    output_file.write(change + "\n")
 
 
 output_file.close()
