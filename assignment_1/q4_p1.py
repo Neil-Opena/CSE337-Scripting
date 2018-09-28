@@ -8,7 +8,7 @@ def get_n_gram_dictionary(file_name, n):
 
     dictionary = {}
 
-    f = open(file_name)
+    f = open(file_name, encoding="utf8")
     f_word_list = []
     for line in f:
         temp_list = (line.strip()).split(" ")
