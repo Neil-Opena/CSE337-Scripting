@@ -22,12 +22,13 @@ def get_n_gram_dictionary(file_name, n):
             num_occurrences += 1
             dictionary[n_gram] = num_occurrences
 
+    # final result is dictionary containing n-grams with more than 1 occurrence
+    for key in list(dictionary.keys()):
+        if(dictionary[key] == 1):
+            dictionary.pop(key)
+
     f.close()
 
 
     return dictionary
-
-
-print(get_n_gram_dictionary("q4_test_file.txt", 3))
-
 
