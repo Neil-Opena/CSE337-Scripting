@@ -9,9 +9,13 @@ def get_n_gram_dictionary(file_name, n):
     dictionary = {}
 
     f = open(file_name)
-
-    f_contents = f.read().strip()
-    f_word_list = f_contents.split(" ")
+    f_word_list = []
+    for line in f:
+        temp_list = (line.strip()).split(" ")
+        f_word_list.extend(temp_list)
+    
+    #f_contents = f.read().strip()
+    #f_word_list = f_contents.split(" ")
 
     for i in range(0, len(f_word_list) - (n - 1)):
         n_gram = " ".join(f_word_list[i:n + i])
