@@ -50,6 +50,7 @@ def validate_unique_characters(password):
 
 def validate_username_appearance(password):
     reverse = username[::-1]
+    #FIXME
     return not ((username in password) or (reverse in password))
 
 def validate(password):
