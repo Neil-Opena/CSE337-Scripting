@@ -48,10 +48,10 @@ for data_row in commodities_data:
     #get the change
     change = get_change(data_row)
 
-    output_file.write(symbol + ",")
-    output_file.write(name + ",")
-    output_file.write(last_price + ",")
-    output_file.write(market_time + ",")
+    output_file.write(symbol + ", ")
+    output_file.write(name + ", ")
+    output_file.write(last_price + ", ")
+    output_file.write(market_time + ", ")
     output_file.write(change + "\n")
 
 

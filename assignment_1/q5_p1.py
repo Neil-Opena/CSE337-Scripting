@@ -29,13 +29,15 @@ def validate_substring(password):
         dictionary[substring] = num_occurrence
     for key in dictionary.keys():
         if(dictionary.get(key) != 1):
-            print(dictionary)
             return False
     return True
 
 def validate_palindrome(password):
-    reverse = (password[::-1])
-    return not reverse == password
+    if(len(password) <= 1):
+        return False
+    if(password[0] != password[-1]):
+        return True
+    return validate_palindrome(password[1:-1])
 
 def validate_unique_characters(password):
     dictionary = {}
@@ -48,13 +50,12 @@ def validate_unique_characters(password):
         dictionary[char] = num_occurrence
     return len(dictionary.keys()) > (len(password) / 2)
 
-def validate_username_appearance(password):
+def validate_username_appearance(username, password):
     reverse = username[::-1]
-    #FIXME
     return not ((username in password) or (reverse in password))
 
 def validate(password):
-    return validate_length(password) and validate_characters(password) and validate_substring(password) and validate_palindrome(password) and validate_unique_characters(password) and validate_username_appearance(password)
+    return validate_length(password) and validate_characters(password) and validate_substring(password) and validate_palindrome(password) and validate_unique_characters(password) and validate_username_appearance(username, password)
 
 username = input("Username: ")
 password = input("Password: ")

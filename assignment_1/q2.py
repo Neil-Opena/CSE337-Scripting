@@ -35,7 +35,7 @@ for key in weekly_prices.keys():
         weekly_price += price
     mean_price = weekly_price / len(prices)
 
-    output_file.write(date_string + ": ")
+    output_file.write(date_string + ", ")
     output_file.write(str(max_price) + ", ")
     output_file.write(str(min_price) + ", ")
     output_file.write(str(mean_price))
