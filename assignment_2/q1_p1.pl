@@ -1,4 +1,4 @@
-#Part I - Preparing an Exhibition
+#Part 1 - Preparing an Exhibition
 use strict;
 use warnings;
 
