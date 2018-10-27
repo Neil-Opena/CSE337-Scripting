@@ -1,4 +1,6 @@
 #Part 1 - Text Transformation
+use strict;
+use warnings;
 
 open INPUT, "<q2.in" or die "Can't open input file: $!";
 open OUTPUT, ">q2p1.out" or die "Can't open output file: $!";
