@@ -3,23 +3,45 @@ use strict;
 use warnings;
 
 open COLLECTIONS, "<collections.csv" or die "Can't open input file: $!";
-my @collections_array = <COLLECTIONS>;
+my $first_line = "";
+my @exhibition_array = ();
+
+while(<COLLECTIONS>){
+    chomp $_;
+    if($. == 1){
+    	$first_line = "$_\n";
+    }else{
+    	push(@exhibition_array, $_);
+    }
+}
 close COLLECTIONS;
-my $first_line = $collections_array[0];
-shift @collections_array;
-my $temp = $collections_array[-1];
-print "$temp\n";
 
 open M1, "<m1.csv" or die "Can't open input file: $!";
-my @m1_array = <M1>;
+while(<M1>){
+    chomp $_;
+    unless($. == 1){
+    	push(@exhibition_array, $_);
+    }
+}
 close M1;
-shift @m1_array;
 
 open M2, "<m2.csv" or die "Can't open input file: $!";
-my @m2_array = <M2>;
+while(<M2>){
+    chomp $_;
+    unless($. == 1){
+    	push(@exhibition_array, $_);
+    }
+}
 close M2;
-shift @m2_array;
+
+@exhibition_array = sort @exhibition_array;
 
 open EXHIBITION, ">exhibition.csv" or die "Can't open output file: $!";
-# don't forget first line
+my $file_lines = $first_line . join("\n",@exhibition_array);
+
+#print EXHIBITION "$first_line\n";
+#foreach my $elem (@exhibition_array){
+#print EXHIBITION "$elem\n";
+#}
+print EXHIBITION $file_lines;
 close EXHIBITION;
