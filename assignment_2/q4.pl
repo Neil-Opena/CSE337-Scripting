@@ -1,6 +1,7 @@
 #Part 4 - Files and Directories
 use strict;
 use warnings;
+use Cwd 'abs_path';
 
 mkdir "features";
 
@@ -20,7 +21,9 @@ while(<FEATURES>){
 }
 
 close FEATURES;
+print "Files have been created!\n";
 
 for(my $i = 0; $i <= 9; $i += 1){
+    print abs_path($files[$i]) . "\n";
     close $files[$i];
 }
