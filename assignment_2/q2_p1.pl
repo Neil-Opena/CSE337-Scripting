@@ -28,16 +28,16 @@ sub swap_line{
 
     if($line =~ m/$str1/){
         my @words = split(" ",$line);
-        my $original = join(" ", @words);
         foreach my $to_replace (@words){
             if ($to_replace =~ m/^$str1((\W).*|\W?)$/){
-                # print $to_replace;
+                my $word = $to_replace;
                 $to_replace =~ s/$str1/$str2/;
+
+                $line =~ s/\b$word\W/$to_replace /;
+
+                print $line . "\n";
             }
         }
-        # return join(" ", @words) . "\n";
-        my $final = join(" ", @words);
-        $line =~ s/$original/$final/;
     }
     return $line;
 }
