@@ -28,8 +28,34 @@ my @strings_4 = ("bag ok asdfasdfafdas", "o aaasasdfas a", "okasdfasfdsaf lol a"
     # }
 # }
 
-foreach my $string (@strings_4){
-    if($string =~ m/^((\w{1,4})\s)*\w{1,4}$/){
+# foreach my $string (@strings_4){
+    # if($string =~ m/^((\w{1,4})\s)*\w{1,4}$/){
+        # print "true\n";
+    # }else{
+        # print "false\n";
+    # }
+# }
+
+my @match_1 = ("F a", "F  b", "F c", "a", "b", "c");
+my @match_2 = ("oneone", "#1oneone", "#1one#1one", "a", "b", "c");
+my @match_3 = ("a", "b", "c", "?", ".", "!");
+
+# foreach my $string (@match_1){
+#     if($string =~ m/[-+]?\d*(\.\D+)?F\s/){
+#         print "true\n";
+#     }else{
+#         print "false\n";
+#     }
+# }
+# foreach my $string (@match_2){
+#     if($string =~ m/(#?)(1?)(one)\1\2\3/){
+#         print "true\n";
+#     }else{
+#         print "false\n";
+#     }
+# }
+foreach my $string (@match_3){
+    if($string =~ m/((a*?)\b).*\w\2\1/){
         print "true\n";
     }else{
         print "false\n";

@@ -1,0 +1,24 @@
+strings that match [-+]?\d*(\.\D+)?F\s:
+    - "F a"
+    - "F b"
+    - "F c"
+strings that DO NOT match [-+]?\d*(\.\D+)?F\s:
+    - "a"
+    - "b"
+    - "c"
+strings that match (#?)(1?)(one)\1\2\3:
+    - "oneone"
+    - "#1oneone"
+    - "#1one#1one"
+strings that DO NOT match (#?)(1?)(one)\1\2\3:
+    - "a"
+    - "b"
+    - "c"
+strings that match ((a*?)\b).*\w\2\1:
+    - "a"
+    - "b"
+    - "c"
+strings that DO NOT match ((a*?\b).*\w\2\1):
+    - "?"
+    - "."
+    - "!"
