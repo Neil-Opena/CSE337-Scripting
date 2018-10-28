@@ -22,9 +22,9 @@ sub swap_line{
     #second arg = word to replace
     #third arg = replacement word
     #my @line = split("", @_[0]);
-    my $line = @_[0];
-    my $str1 = @_[1];
-    my $str2 = @_[2];
+    my $line = $_[0];
+    my $str1 = $_[1];
+    my $str2 = $_[2];
 
     $line =~ s/$str1/$str2/g;
     return $line;
