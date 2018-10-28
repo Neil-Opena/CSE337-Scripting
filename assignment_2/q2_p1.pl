@@ -34,8 +34,6 @@ sub swap_line{
                 $to_replace =~ s/$str1/$str2/;
 
                 $line =~ s/\b$word\W/$to_replace /;
-
-                print $line . "\n";
             }
         }
     }
