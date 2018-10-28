@@ -1,0 +1,1 @@
+There won't be a stdin.txt when testing your case. stdin.txt is created to tell you what to enter from keyboard.
