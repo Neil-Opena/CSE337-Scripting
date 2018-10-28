@@ -38,7 +38,6 @@ sub swap_line{
         # return join(" ", @words) . "\n";
         my $final = join(" ", @words);
         $line =~ s/$original/$final/;
-        print $line;
     }
     return $line;
 }
