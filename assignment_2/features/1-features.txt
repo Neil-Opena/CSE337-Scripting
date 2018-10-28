@@ -1,0 +1,10 @@
+or from del not global if print in return raise not try lambda del with is lambda exec def return lambda with while else lambda global import finally try else and if lambda finally else raise from del import for assert return exec import
+if and while pass elif from continue def in print else with for del del del continue assert else global while lambda global raise class yield del lambda assert print print return try global return def
+elif try not else class else or import pass from assert with pass for pass continue pass raise raise and global assert pass in continue as global del elif except try in with class del return exec not assert del print finally in
+pass class print pass from lambda try else is in print lambda else def global exec if except class is except del from del pass finally elif assert del continue exec try if for while continue assert def and from global
+with or finally try def with is while in if lambda or import raise in in for try break exec raise and except else or if not print pass finally except exec lambda lambda return while def from
+print lambda elif else lambda finally print print import else elif pass pass return pass break assert del assert while else try with in raise yield or yield continue print exec finally is else yield in assert for def class if
+if except continue lambda as pass assert elif except is def def in with pass return assert continue global from import in global while return try assert yield elif exec print except elif with if print def try exec for is
+return for finally lambda not import from exec break with def print global finally try elif del global finally assert class with pass elif pass if as as as from while pass is pass not raise as break
+else except while not yield is pass yield for del if del if for or exec while else or is try or del and for if is else pass exec break yield as exec or raise finally else exec or
+assert try else def from continue lambda del not lambda assert global with break not except is except in as from pass in with raise elif else or raise continue and or for break with pass and from for else break raise try as

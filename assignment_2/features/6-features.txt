@@ -1,0 +1,12 @@
+import with elif continue pass as elif try lambda global and yield assert finally raise class pass class try exec from del else if with if continue return yield pass except try del else and except if while except
+import import elif exec return import if return with is and lambda or except else assert not in import class del for is raise import break as continue pass as in global yield lambda break finally and as not return lambda class
+pass elif if def while import break global raise import assert or def not global yield continue elif raise assert def for or assert return return with except is not assert in lambda else from del not or pass finally continue import finally
+print raise def in del while return try yield finally class exec with class exec yield else del with global del and finally from global global class with print or elif if return yield is if finally finally
+yield is for exec is as for exec not or as import global import if with del finally as except except lambda raise for lambda try continue del with yield else not continue return while is exec def else or
+else if and yield finally with is yield as break except not class or except with continue yield or not else try else assert break as while global import continue global exec global def del
+with in raise continue continue while for try as raise yield yield yield yield import continue with or pass return raise pass finally try del while class from is in break exec del is continue try class and
+while for try global print and is or or finally in else except continue while assert with finally not and else lambda try def in as pass raise try def is print or pass or class continue
+raise finally elif with class break return class try for elif in import print lambda continue is else finally print import exec import raise or continue as as if not lambda for and while for while def finally global
+try with for raise global def from continue raise assert return finally pass except class lambda def continue except import finally from raise as not pass if break pass as return except as yield and
+except and return try import from and finally elif in class elif exec if finally while assert print if not exec import global or else from or if and from not else as while def pass is global import exec print and or is finally
+def pass finally is exec in and is with except import and is and exec while pass not pass if continue def else elif from print continue assert pass continue is while try and import raise assert is if or finally

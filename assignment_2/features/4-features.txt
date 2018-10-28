@@ -1,0 +1,7 @@
+is if finally break with pass try elif in try from class exec from while global return exec import return with import import assert not elif if return raise and and break for global with try not pass assert
+assert is not as lambda is in raise for pass lambda finally import lambda and def global print del print in pass or in from else from raise if with yield del global or assert is return finally not global not else elif print in
+yield yield for del and try elif yield return lambda class for raise else or import as def try return try lambda and yield as is print is print not pass finally assert import from else return def def del else print
+yield continue or and except from class or assert try class finally yield print finally as del return try exec def is not pass return raise break except if return import exec finally class finally
+pass return if exec while if while as elif is import or for lambda and else exec with in not or elif import for as raise def yield yield and is global import yield lambda assert else try
+and and if pass raise global continue finally or not from lambda raise from while is while def except except with except from try global return in is break except for global or def in from continue if global and elif print yield return
+with import break print not as lambda with del finally break def except finally try exec import for break import raise in or else del import else assert as is assert assert break not def import global not lambda break else def return finally

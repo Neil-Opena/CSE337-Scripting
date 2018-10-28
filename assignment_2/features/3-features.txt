@@ -1,0 +1,12 @@
+import with class exec del break for for while in print with global from if try continue and from continue def assert as continue elif exec and print or in while continue in assert finally try and with import lambda as finally
+as def with assert try del if return def elif lambda is is del elif as is from elif and elif pass not while as print finally pass raise break pass exec while try for import continue else pass finally
+else assert return class global exec elif import from del pass import not from while class for raise global elif exec import try lambda for break del as global class else from yield raise not elif del pass elif raise finally
+elif if break finally not yield return for print def raise from if return raise exec from import import try break raise or for for yield if or in in continue class in def lambda or
+break exec except not elif break else lambda try try lambda try and raise continue in as import for print return pass not except from finally break except class lambda while else as continue finally class from break
+is else as def exec del finally break lambda with if except from class print as print exec global with assert while continue lambda from exec continue while lambda elif in for lambda yield raise with try continue from not if def class
+lambda def and assert is except except assert assert while if is else global if return with as elif for except from raise finally del class for except lambda return global else for or for as or for raise and
+import from del elif else return in else in else with while return class return as exec print if while exec is global for if not try is pass return as del except with elif for from lambda else as break
+lambda del except finally lambda break return global import def pass as from finally class yield as with continue def try if else lambda def with pass def def in finally pass except in with try not try break class
+is as print exec def or and assert raise import as elif in exec yield lambda else or with except print raise while while raise in finally or as if else print else del assert global continue assert as or as
+return break elif try for continue if as with return print for if del print else pass if finally in break except except in while yield if not for import raise exec raise not return lambda print import or break def
+print for try or not class def import not print with elif or for else for not pass finally in for pass is pass while exec as finally try in is in in from with if assert continue pass or exec yield elif
