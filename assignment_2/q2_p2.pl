@@ -27,10 +27,10 @@ if(scalar @output == scalar @original){
 }
 
 sub keep_line{
-    my $line = @_[0];
+    my $line = $_[0];
 
-    my @words = split(" ", @_[0]);
-    if(scalar @words == @_[1]){
+    my @words = split(" ", $_[0]);
+    if(scalar @words == $_[1]){
     	return 0;
     }else{
     	return 1; #1 == true, 0 == false
