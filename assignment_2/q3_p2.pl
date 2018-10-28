@@ -49,8 +49,7 @@ sub valid_key{
 }
 
 sub valid_final{
-    my $to_return = valid_key($_[0]);
-    unless(valid_final($_[0])){
+    unless(valid_key($_[0])){
         return 0;
     }
     if($cummulative_table{$_[0]} < $cummulative_table{$initial}){
