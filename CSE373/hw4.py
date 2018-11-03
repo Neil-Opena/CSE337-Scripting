@@ -1,4 +1,5 @@
 import sys
+import math
 class EdgeNode():
     def __init__(self, y, next_edge=None):
         self.y = y
@@ -13,7 +14,12 @@ class Graph():
         self.num_edges = 0
         self.adjacency_list = []
         self.degree_list = []
+
         self.finished = False
+        self.max_degree = 0
+        self.min_degree = 0
+        self.solution = 0
+        self.solution_length = 0
 
     def read_graph(self, file_name):
         f = open(file_name)
@@ -28,12 +34,24 @@ class Graph():
             y = int(edge[1])
             self.insert_edge(x, y, False)
 
+        self.min_degree = self.get_min_degree()
+        self.solution_length = self.num_vertices
+
         f.close()
+
+    def get_min_degree(self):
+        minimum = self.num_vertices
+        for i in range(0, len(self.degree_list)):
+            if(self.degree_list[i] < minimum):
+                minimum = self.degree_list[i]
+        return minimum
 
     def insert_edge(self, x, y, is_directed):
         edge_node = EdgeNode(y, self.adjacency_list[x - 1])
         self.adjacency_list[x - 1] = edge_node
         self.degree_list[x - 1] += 1
+        if(self.degree_list[x - 1] > self.max_degree):
+            self.max_degree = self.degree_list[x - 1]
 
         if(is_directed == False):
             self.insert_edge(y, x, True)
@@ -52,10 +70,10 @@ class Graph():
         k = 0
         self.finished = False
         self.permute_vertices(a, k)
+        print(self.solution, "->", self.solution_length)
 
     def permute_vertices(self, a, k):
         if(k == len(a)): # if the length of the solution list == the number of vertices, print the permutation
-            print(a, end = "->")
             self.check_permutation(a)
         else:
             k += 1
@@ -63,10 +81,21 @@ class Graph():
             self.generate_candidates(a, k, candidates, )
             for i in range(0, len(candidates)):
                 a[k - 1] = candidates[i]
-                self.permute_vertices(a, k)
+                #if(self.continue_from_prune(a,k)):
+                    #self.permute_vertices(a, k)
+                    #if(self.finished):
+                        #return
+                self.permute_vertices(a,k)
                 if(self.finished):
                     return
-                a[k - 1] = -1
+                a[k-1] = -1
+
+    def continue_from_prune(self, a, k):
+        if(self.degree_list[a[0] - 1] == self.min_degree): #first vertex should have minimum degree
+            return True
+
+        # what if theres a check for symmetry
+        return False
 
     def generate_candidates(self, a, k, c):
         # get numbers not in the array yet
@@ -94,27 +123,23 @@ class Graph():
                             start = j
                         if(a[j] == edge.y):
                             end = j
-                    temp_length = end - start
+                    temp_length = abs(end - start)
                     if(temp_length > max_length):
                         max_length = temp_length
                 edge = edge.next
 
-        # FIXME
-        print(max_length)
-        if(a[0] == 1 and a[1] == 5 and a[2] == 6 and a[3] == 4 and a[4] == 7 and a[5] > 2):
-            self.finished = True
+        if(max_length < self.solution_length):
+            self.solution_length = max_length
+            self.solution = a
+            if(max_length <= math.ceil(self.max_degree / 2)): # if it hits the lower bound, stop
+                self.finished = True
+        print(a, "=>", max_length)
         # find the longest edge based on permutation
-        return True
 
 
 file_name = sys.argv[1] 
 
 graph = Graph()
 graph.read_graph(file_name)
-# graph.print_adjacency_list()
 graph.solve_bandwidth()
-
-# solve bandwith
-# prune search space
-# change data structure
 
