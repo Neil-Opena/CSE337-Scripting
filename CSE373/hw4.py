@@ -136,6 +136,7 @@ class Graph():
                     if a[j] == (i):
                         found = True
                 if(not found):
+                    # k - 1 == index of candidate
                     c.append(i)
         else:
             for i in range(1, self.num_vertices + 1): # go through possible vertices
