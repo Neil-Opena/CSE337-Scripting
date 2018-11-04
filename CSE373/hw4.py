@@ -16,6 +16,7 @@ class Graph():
         self.degree_list = []
 
         self.finished = False
+        self.setup_completed = False
         self.max_degree = 0
         self.min_degree = 0
         self.solution = 0
@@ -56,17 +57,8 @@ class Graph():
         if(is_directed == False):
             self.insert_edge(y, x, True)
 
-    def print_adjacency_list(self):
-        for i in range(0, self.num_vertices):
-            print(i + 1, "->", end = " ")
-            edge = self.adjacency_list[i]
-            while(edge != None):
-                print(edge, end =" ")
-                edge = edge.next
-            print()
-
     def solve_bandwidth(self):
-        a = [-1]*self.num_vertices #solution list
+        a = [0]*self.num_vertices #solution list
         k = 0
         self.finished = False
         self.permute_vertices(a, k)
@@ -78,37 +70,57 @@ class Graph():
         else:
             k += 1
             candidates = []
-            self.generate_candidates(a, k, candidates, )
+            self.generate_candidates(a, k, candidates)
             for i in range(0, len(candidates)):
                 a[k - 1] = candidates[i]
-                #if(self.continue_from_prune(a,k)):
-                    #self.permute_vertices(a, k)
-                    #if(self.finished):
-                        #return
-                self.permute_vertices(a,k)
-                if(self.finished):
-                    return
+                if(self.continue_from_prune(a,k)):
+                    self.permute_vertices(a, k)
+                    if(self.finished):
+                        return
                 a[k-1] = -1
 
     def continue_from_prune(self, a, k):
         if(self.degree_list[a[0] - 1] == self.min_degree): #first vertex should have minimum degree
             return True
 
+        # check if edges in the graph are higher than lower bound already
+        # FIXME
+
         # what if theres a check for symmetry
         return False
 
     def generate_candidates(self, a, k, c):
         # get numbers not in the array yet
-        for i in range(0, self.num_vertices): # go through possible vertices
-            found = False
-            for j in range(0, k):
-                if a[j] == (i + 1):
-                    found = True
-            if(not found):
-                c.append(i + 1)
+        # generate solution through bfs
+        # make method to generate solution as a graph variable
+        #b = [6,3,7,1,2,4,5,8,9,10] # bt-10-9
+        #b = [1,5,6,4,7,2,10,8,9,3] # p-10-9
+        #b = [1,4,8,9,2,3,6,5,7,10,11] # t-11-10
+        b = [3,4,14,9,15,21,11,24,18,20,25,7,23,19,10,1,8,12,5,6,17,2,22,16,13]
+        if(not self.setup_completed):
+            for i in range(b[k - 1], self.num_vertices + 1): # go through possible vertices
+                found = False
+                for j in range(0, k): # check solution vector for vertices placed
+                    if a[j] == (i):
+                        found = True
+                if(not found):
+                    c.append(i)
+        else:
+            for i in range(1, self.num_vertices + 1): # go through possible vertices
+                found = False
+                for j in range(0, k): # check solution vector for vertices placed
+                    if a[j] == (i):
+                        found = True
+                if(not found):
+                    c.append(i)
+
+
+
+            # MAKE METHOD TO CHECK IF GREATER
 
     def check_permutation(self, a):
         # go through the vertices
+        self.setup_completed = True
         max_length = 0
         for i in range(0, self.num_vertices):
             edge = self.adjacency_list[i]
@@ -135,7 +147,6 @@ class Graph():
                 self.finished = True
         print(a, "=>", max_length)
         # find the longest edge based on permutation
-
 
 file_name = sys.argv[1] 
 
