@@ -129,15 +129,6 @@ class Graph():
 
     def generate_candidates(self, a, k, c):
         # get numbers not in the array yet
-<<<<<<< HEAD
-        # generate solution through bfs
-        # make method to generate solution as a graph variable
-        #b = [6,3,7,1,2,4,5,8,9,10] # bt-10-9
-        #b = [1,5,6,4,7,2,10,8,9,3] # p-10-9
-        #b = [1,4,8,9,2,3,6,5,7,10,11] # t-11-10
-        #b = [3,4,14,9,15,21,11,24,18,20,25,7,23,19,10,1,8,12,5,6,17,2,22,16,13]
-=======
->>>>>>> 0e26a94500b5a1d9a8ecfd375b28dbb89614d1b5
         if(not self.setup_completed):
             for i in range(self.heuristic[k - 1], self.num_vertices + 1): # go through possible vertices
                 found = False
@@ -154,7 +145,25 @@ class Graph():
                     if a[j] == (i):
                         found = True
                 if(not found):
-                    c.append(i)
+                    # k - 1 == index of candidate
+                    if(k - 1 > self.solution_length + 1):
+                        v = a[k - 1 - self.solution_length - 1]
+                        edge = self.adjacency_list[v - 1]
+                        has_edge = False
+                        # print("vertex" ,2)
+                        while(edge != None):
+                            # print(edge.y)
+                            if(edge.y == i):
+                                has_edge = True
+                                print("has edge")
+                            edge = edge.next
+                        if(not has_edge):
+                            c.append(i)
+                    else:
+                        c.append(i)
+                # if(not found):
+                #     c.append(i)
+            #self.finished = True
 
             # MAKE METHOD TO CHECK IF GREATER
 
