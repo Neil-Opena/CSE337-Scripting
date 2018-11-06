@@ -49,17 +49,21 @@ class Graph():
 
         # perform bfs with vertex with smallest degree
         
-        for i in range(0, self.num_vertices):
-            if(i + 1 not in self.heuristic):
-                self.heuristic += self.bfs(self.ordered_vertices[i]) 
+        #for i in range(0, self.num_vertices):
+            #if(i + 1 not in self.heuristic):
+                #self.heuristic += self.bfs(self.ordered_vertices[i]) 
 
-        test = []
+        bfs_list = []
         for i in range(0, self.num_vertices):
-            test.append(self.bfs(self.ordered_vertices[i]))
+            bfs_list.append(self.bfs(self.ordered_vertices[i]))
                 # perform bfs with each vertex
 
-        test.sort(key = lambda x : self.get_bandwidth(x, self.num_vertices))
-        self.heuristic = test[0]
+        bfs_list.sort(key = lambda x : self.get_bandwidth(x, self.num_vertices))
+        for i in range(0, self.num_vertices - 1):
+            if(len(bfs_list[i]) != self.num_vertices):
+                bfs_list[i] += bfs_list[i + 1]
+                # account for unconnected components
+        self.heuristic = bfs_list[0]
             
         f.close()
 
@@ -117,8 +121,6 @@ class Graph():
         print(a, "bandwidth=", self.get_bandwidth(a,k))
         return False
 
-        # what if theres a check for symmetry
-
     def get_bandwidth(self, a, k):
         max_length = 0
         for i in range(0, k):
@@ -134,7 +136,7 @@ class Graph():
                 if(temp_length != 0 and temp_length > max_length):
                     max_length = temp_length
                 if(max_length >= self.solution_length):
-                    return max_length
+                    return max_length # no need to look at other edges
                 edge = edge.next
         return max_length
 
@@ -181,7 +183,7 @@ class Graph():
                     temp_length = abs(end - start)
                     if(temp_length > max_length):
                         max_length = temp_length
-                        if(max_length > self.solution_length):
+                        if(max_length >= self.solution_length):
                             print(a, "=>", max_length)
                             return 
                 edge = edge.next
