@@ -48,11 +48,19 @@ class Graph():
         self.lower_bound = math.ceil(self.max_degree / 2)
 
         # perform bfs with vertex with smallest degree
-
+        
         for i in range(0, self.num_vertices):
             if(i + 1 not in self.heuristic):
-                self.heuristic += self.bfs(self.ordered_vertices[i])
+                self.heuristic += self.bfs(self.ordered_vertices[i]) 
 
+        test = []
+        for i in range(0, self.num_vertices):
+            test.append(self.bfs(self.ordered_vertices[i]))
+                # perform bfs with each vertex
+
+        test.sort(key = lambda x : self.get_bandwidth(x, self.num_vertices))
+        self.heuristic = test[0]
+            
         f.close()
 
     def insert_edge(self, x, y, is_directed):
@@ -89,6 +97,7 @@ class Graph():
 
     def permute_vertices(self, a, k):
         if(k == len(a)): # if the length of the solution list == the number of vertices, print the permutation
+            self.setup_completed = True
             self.check_permutation(a)
         else:
             k += 1
@@ -124,6 +133,8 @@ class Graph():
                         break
                 if(temp_length != 0 and temp_length > max_length):
                     max_length = temp_length
+                if(max_length >= self.solution_length):
+                    return max_length
                 edge = edge.next
         return max_length
 
@@ -132,44 +143,28 @@ class Graph():
         if(not self.setup_completed):
             for i in range(self.heuristic[k - 1], self.num_vertices + 1): # go through possible vertices
                 found = False
-                for j in range(0, k): # check solution vector for vertices placed
-                    if a[j] == (i):
-                        found = True
-                if(not found):
-                    # k - 1 == index of candidate
+                if(i not in a):
                     c.append(i)
         else:
             for i in range(1, self.num_vertices + 1): # go through possible vertices
                 found = False
-                for j in range(0, k): # check solution vector for vertices placed
-                    if a[j] == (i):
-                        found = True
-                if(not found):
-                    # k - 1 == index of candidate
+                if(i not in a):
                     if(k - 1 > self.solution_length + 1):
                         v = a[k - 1 - self.solution_length - 1]
                         edge = self.adjacency_list[v - 1]
                         has_edge = False
-                        # print("vertex" ,2)
                         while(edge != None):
-                            # print(edge.y)
                             if(edge.y == i):
                                 has_edge = True
-                                print("has edge")
+                                break;
                             edge = edge.next
                         if(not has_edge):
                             c.append(i)
                     else:
                         c.append(i)
-                # if(not found):
-                #     c.append(i)
-            #self.finished = True
-
-            # MAKE METHOD TO CHECK IF GREATER
 
     def check_permutation(self, a):
         # go through the vertices
-        self.setup_completed = True
         max_length = 0
         for i in range(0, self.num_vertices):
             edge = self.adjacency_list[i]
@@ -186,6 +181,9 @@ class Graph():
                     temp_length = abs(end - start)
                     if(temp_length > max_length):
                         max_length = temp_length
+                        if(max_length > self.solution_length):
+                            print(a, "=>", max_length)
+                            return 
                 edge = edge.next
 
         if(max_length < self.solution_length):
@@ -201,3 +199,4 @@ file_name = sys.argv[1]
 graph = Graph()
 graph.read_graph(file_name)
 graph.solve_bandwidth()
+
