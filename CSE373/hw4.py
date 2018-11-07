@@ -47,12 +47,6 @@ class Graph():
         self.max_degree = self.degree_list[self.ordered_vertices[-1] - 1]
         self.lower_bound = math.ceil(self.max_degree / 2)
 
-        # perform bfs with vertex with smallest degree
-        
-        #for i in range(0, self.num_vertices):
-            #if(i + 1 not in self.heuristic):
-                #self.heuristic += self.bfs(self.ordered_vertices[i]) 
-
         bfs_list = []
         for i in range(0, self.num_vertices):
             bfs_list.append(self.bfs(self.ordered_vertices[i]))
