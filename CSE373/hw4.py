@@ -58,11 +58,15 @@ class Graph():
             bfs_list.append(self.bfs(self.ordered_vertices[i]))
                 # perform bfs with each vertex
 
-        bfs_list.sort(key = lambda x : self.get_bandwidth(x, self.num_vertices))
-        for i in range(0, self.num_vertices - 1):
+        for i in range(0, self.num_vertices):
             if(len(bfs_list[i]) != self.num_vertices):
-                bfs_list[i] += bfs_list[i + 1]
-                # account for unconnected components
+                # if permutation does not contain all the vertices
+                # go through the other bfs and add it
+                for j in range(0, self.num_vertices):
+                    bfs_list[i] += [x for x in bfs_list[j] if x not in bfs_list[i]]
+                    if(len(bfs_list[i]) == self.num_vertices):
+                            break
+        bfs_list.sort(key = lambda x : self.get_bandwidth(x, self.num_vertices))
         self.heuristic = bfs_list[0]
             
         f.close()
