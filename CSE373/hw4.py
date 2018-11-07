@@ -1,6 +1,8 @@
 import sys
 import math
 import queue
+import cProfile
+import re
 class EdgeNode():
     def __init__(self, y, next_edge=None):
         self.y = y
@@ -194,5 +196,5 @@ file_name = sys.argv[1]
 
 graph = Graph()
 graph.read_graph(file_name)
-graph.solve_bandwidth()
+cProfile.run('graph.solve_bandwidth()')
 
