@@ -1,0 +1,26 @@
+Current shell is: /bin/bash
+Current directory is: /home/neil/Documents/Stony_Brook_University/Junior Year 2018-19/Fall 2018/CSE337/CSE337-Scripting/assignment_3
+Home directory is: /home/neil
+
+--5 most recently modified non-empty subdirectories--
+drwxr-xr-x 2 neil neil 4096 Nov 25 12:50 A3tmp
+drwxr-xr-x 2 neil neil 4096 Nov 25 12:06 Pictures
+drwxr-xr-x 2 neil neil 4096 Nov 25 10:36 p3_directory
+drwxr-xr-x 3 neil neil 4096 Nov 25 10:26 p2_clone
+d-wx--x--x 2 neil neil 4096 Nov 24 19:31 clone
+
+--Files in last 45 minutes
+/home/neil/.cache/google-chrome/Default/Cache
+/home/neil/.cache/google-chrome/Default/Cache/index-dir/the-real-index
+/home/neil/snap/spotify/common/.cache/spotify/mercury.db
+/home/neil/snap/spotify/common/.cache/spotify/Data/wg/49e8d579467c8af126caa5f21263359648cf0d4c/Cache/data_1
+/home/neil/snap/spotify/common/.cache/spotify/mercury.db-wal
+/home/neil/snap/spotify/common/.cache/spotify/Browser/Cache/data_1
+/home/neil/.config/google-chrome/Default/Favicons
+/home/neil/.config/google-chrome/Default/History
+/home/neil/.config/google-chrome/Default/Network Action Predictor
+/home/neil/.config/google-chrome/Default/Cookies
+/home/neil/.config/google-chrome/Safe Browsing/UrlSoceng.store
+/home/neil/.config/google-chrome/BrowserMetrics/BrowserMetrics-5BF9C711-691.pma
+
+======================================================================
