@@ -4,5 +4,7 @@
     <div><p><h1>{{ post.title }}</h1></p><br>{{post.body}}</div>
     <br>
     By: <a href="/user/{{author.username}}">{{author.username}}</a> at {{post.timestamp}}
+    <br>
+    <a href="/remove/{{post.id}}" style="color:red">Remove Post</a>
 
 {% endblock %}
