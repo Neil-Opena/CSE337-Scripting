@@ -1,8 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Welcome to Wiki Application</h1>
-    {% for post in posts %}
-    <div><p><a href="posts/{{post.id}}">{{ post.title }}</a></b></p></div>
-    {% endfor %}
+    <h1>Submit new Text</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.text.label }}<br>
+            {{ form.text(cols="100", rows="30") }}<br>
+            {% for error in form.text.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {% for subfield in form.choices %}
+            <tr>
+            <td>{{ subfield }}</td>
+            <td>{{ subfield.label }}</td>
+            </tr>
+            <br>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.delimiters.label}}
+            {{ form.delimiters(size=30, maxlength=50) }}
+            {% for error in form.text.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
 {% endblock %}
