@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div><p><h1>Successfully Removed: {{ post.title }}</h1></p></div>
+
+    <div>
+        <p style="color:red">This post has been removed</p>
+    </div>
+
+    <div style="background-color: lightgray">
+        <div>
+            <p>
+                <h1>{{ post.title }}</h1>
+            </p>
+            <br>
+            {{post.body}}
+        </div>
+        <br>
+        By: <a href="/user/{{author.username}}">{{author.username}}</a> at {{post.timestamp}}
+    </div>
+
+{% endblock %}

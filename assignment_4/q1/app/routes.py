@@ -23,6 +23,15 @@ def showpost(postid):
     return render_template('notloggedin.html')
 
 
+@app.route('/remove/<postid>')
+def removepost(postid):
+    if current_user.is_authenticated:
+        current_post = Post.query.filter_by(id=postid)[0]
+        author = current_post.author 
+        return render_template('remove.html', title='Remove Post', post=current_post, author=author)
+    return render_template('notloggedin.html')
+
+
 @app.route('/submit', methods=['GET', 'POST'])
 def submitpage():
     if current_user.is_authenticated:
