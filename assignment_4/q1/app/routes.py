@@ -28,6 +28,8 @@ def removepost(postid):
     if current_user.is_authenticated:
         current_post = Post.query.filter_by(id=postid)[0]
         author = current_post.author 
+        db.session.delete(current_post)
+        db.session.commit()
         return render_template('remove.html', title='Remove Post', post=current_post, author=author)
     return render_template('notloggedin.html')
 
