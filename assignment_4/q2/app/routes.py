@@ -4,8 +4,8 @@ from app.operations import *
 from app.forms import TextForm
 
 # instead of using a data base, global variables were used since only one instance is needed
-text = "temp"
-delimiter = "temp"
+text = "temp text"
+delimiter = "temp delimiter"
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -15,14 +15,33 @@ def index():
     if form.validate_on_submit():
         text = form.text.data
         delimiter = form.delimiters.data
-        return redirect(url_for('showresult', operationname='wordcount'))
+        operation = form.operations.data
+        operation_name = None
+        if(operation == 'a'):
+            operation_name = 'wordcount'
+        elif(operation == 'b'):
+            operation_name = 'charactercount'
+        elif(operation == 'c'):
+            operation_name = 'mostfrequent5words'
+
+        return redirect(url_for('showresult', operationname=operation_name))
     return render_template('index.html', title='Home', form=form)
 
 @app.route('/result/<operationname>')
 def showresult(operationname):
+    if(operationname == 'wordcount'):
+        operation_text = 'Word Count'
+    elif(operationname == 'charactercount'):
+        operation_text = 'Character Count'
+    elif(operationname == 'mostfrequent5words'):
+        operation_text = 'Most Frequent 5 Words'
+    else:
+        return render_template('404.html'), 404
+
+    global text, delimiter
     result = 'yeet'
-    operation = 'Word Count'
-    return render_template('result.html', title='Result', operation=operation, input=text, result=result)
+    # put 404 check here for operation name error
+    return render_template('result.html', title='Result', operation=operation_text, input=text, result=result)
 
 app.errorhandler(403)
 def forbidden_error(error):
@@ -34,5 +53,4 @@ def not_found_error(error):
 
 @app.errorhandler(500)
 def internal_error(error):
-    db.session.rollback()
     return render_template('500.html'), 500
