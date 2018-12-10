@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 
 class TextForm(FlaskForm):
     text = TextAreaField('Text', validators=[DataRequired()])
-    choices = RadioField(choices=[(1,'Word Count'), (2,'Character Count'), (3,'Most Frequent 5 words')], validators=[DataRequired()])
-    delimiters = StringField('Delimeters:', validators=[DataRequired()])
+    operations = RadioField(choices=[('a','Word Count'), ('b','Character Count'), ('c','Most Frequent 5 words')], validators=[DataRequired()])
+    delimiters = StringField('Delimeters:')
     submit = SubmitField('Submit Text')
 

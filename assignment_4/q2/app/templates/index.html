@@ -12,20 +12,21 @@
             {% endfor %}
         </p>
         <p>
-            {% for subfield in form.choices %}
+            {% for subfield in form.operations %}
             <tr>
             <td>{{ subfield }}</td>
             <td>{{ subfield.label }}</td>
             </tr>
             <br>
             {% endfor %}
+
+            {% for error in form.operations.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>
             {{ form.delimiters.label}}
             {{ form.delimiters(size=30, maxlength=50) }}
-            {% for error in form.text.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>
     </form>
