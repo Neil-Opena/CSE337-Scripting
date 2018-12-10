@@ -2,15 +2,19 @@ from flask import render_template, flash, redirect, url_for, request
 from app import app
 from app.operations import *
 from app.forms import TextForm
-from app.models import Post
-from app import db
+
+# instead of using a data base, global variables were used since only one instance is needed
+text = "temp"
+delimiter = "temp"
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
+    global text, delimiter
     form = TextForm()
     if form.validate_on_submit():
-        # get db data and edit it
+        text = form.text.data
+        delimiter = form.delimiters.data
         return redirect(url_for('showresult', operationname='wordcount'))
     return render_template('index.html', title='Home', form=form)
 
@@ -18,7 +22,7 @@ def index():
 def showresult(operationname):
     result = 'yeet'
     operation = 'Word Count'
-    return render_template('result.html', title='Result', operation=operation, input='text', result=result)
+    return render_template('result.html', title='Result', operation=operation, input=text, result=result)
 
 app.errorhandler(403)
 def forbidden_error(error):
