@@ -13,18 +13,16 @@ def get_words(text, delimiters):
             list_r.append(d)
     list_r.append('\s') # include whitespace
     r = '|'.join(list_r)
-    # return r
     words = re.split(r, text)
     return words
 
-
 ''' Returns the number of words in the input, using a string of delimiters to specify where to split the words'''
 def word_count(text, delimiters):
-    # list_d = list(delimiters) 
-    # list_d.append(' ') # include space
-    return get_words(text, delimiters)
-    # get words, count non empty
-    return len(text)
+    words = get_words(text, delimiters)
+    # get words, count non empty 
+    filtered_words = list(filter(lambda x: x != '', words))
+    print('words:\t' + str(filtered_words) + '\nword count:\t' + str(len(filtered_words))) # for testing purposes
+    return len(filtered_words)
 
 ''' Returns the number of characters in the input'''
 def character_count(text): 
@@ -34,7 +32,5 @@ def character_count(text):
 ''' Returns the most frequent five words in the input, 
 using a string of delimiters to specify where to split the words'''
 def frequent_five_words(text, delimiters):
-    # list_d = list(delimiters)
-    # list_d.append(' ') # include space
     # call get_words
     return len(text)
