@@ -4,8 +4,8 @@ from app.operations import *
 from app.forms import TextForm
 
 # instead of using a data base, global variables were used since only one instance is needed
-text = "temp text"
-delimiter = "temp delimiter"
+text = None
+delimiter = ''
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -29,18 +29,23 @@ def index():
 
 @app.route('/result/<operationname>')
 def showresult(operationname):
+    global text, delimiter
+
+    if(operationname == None):
+        return render_template('404.html'), 404
+    if(text == None):
+        return render_template('500.html'), 500
+
     if(operationname == 'wordcount'):
         operation_text = 'Word Count'
+        result = word_count(text, delimiter)
     elif(operationname == 'charactercount'):
         operation_text = 'Character Count'
-    elif(operationname == 'mostfrequent5words'):
-        operation_text = 'Most Frequent 5 Words'
+        result = character_count(text)
     else:
-        return render_template('404.html'), 404
+        operation_text = 'Most Frequent 5 Words'
+        result = frequent_five_words(text, delimiter)
 
-    global text, delimiter
-    result = 'yeet'
-    # put 404 check here for operation name error
     return render_template('result.html', title='Result', operation=operation_text, input=text, result=result)
 
 app.errorhandler(403)
