@@ -74,12 +74,15 @@ def show_search():
 
     def search_record():
         print("search record")
-        if name_entry.get() in data:
-            to_display = "Record found\n" + data[name_entry.get()].display()
+        if name_entry.get() == "":
+            messagebox.showerror("Error", "Please fill in the entry")
         else:
-            to_display = "Record not found for: " + name_entry.get()
-            messagebox.showerror("Error", "No record for: " + name_entry.get())
-        search_result.config(text=to_display)
+            if name_entry.get() in data:
+                to_display = "Record found\n" + data[name_entry.get()].display()
+            else:
+                to_display = "Record not found for: " + name_entry.get()
+                messagebox.showerror("Error", "No record for: " + name_entry.get())
+            search_result.config(text=to_display)
 
     search_button = Button(search_window, text="Search record", command=search_record)
 
@@ -96,12 +99,14 @@ def show_delete():
 
     def delete_record():
         print("delete record")
-
-        if name_entry.get() in data:
-            del data[name_entry.get()]
-            messagebox.showinfo("Success", "Record for " + name_entry.get() + " has been deleted!")
+        if name_entry.get() == "":
+            messagebox.showerror("Error", "Please fill in the entry")
         else:
-            messagebox.showerror("Error", "No record for: " + name_entry.get())
+            if name_entry.get() in data:
+                del data[name_entry.get()]
+                messagebox.showinfo("Success", "Record for " + name_entry.get() + " has been deleted!")
+            else:
+                messagebox.showerror("Error", "No record for: " + name_entry.get())
 
     delete_button = Button(delete_window, text="Delete record", command=delete_record)
 
